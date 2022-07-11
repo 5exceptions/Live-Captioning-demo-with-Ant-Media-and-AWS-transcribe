@@ -1,2 +1,3 @@
-# Live-Captioning-demo-with-Ant-Media-and-AWS-transcribe
-Live Captioning demo with Ant Media and AWS transcribe
+# StreamApp sample AMS application #
+
+For more information on how to install this application, please refer to [this blog post](https://antmedia.io/develop-your-own-application-on-ant-media-server-with-3-steps/). 
