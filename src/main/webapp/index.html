@@ -554,7 +554,6 @@
 
 				} else if (info == "publish_started") {
 					//stream is being published
-					console.log("publish started");
 					start_publish_button.disabled = true;
 					stop_publish_button.disabled = false;
 					//start_cap_button.disabled = false;
@@ -602,13 +601,13 @@
 					checkAndRepublishIfRequired();
 				}
 				else if (info == "ice_connection_state_changed") {
-					console.log("iceConnectionState Changed: ", JSON.stringify(obj));
+					
 				}
 				else if (info == "updated_stats") {
 					//obj is the PeerStats which has fields
 					//averageOutgoingBitrate - kbits/sec
 					//currentOutgoingBitrate - kbits/sec
-
+	
 					$("#average_bit_rate").text(obj.averageOutgoingBitrate);
 					if (obj.averageOutgoingBitrate > 0) {
 						$("#average_bit_rate_container").show();
@@ -761,7 +760,6 @@
 			callbackError: function (error, message) {
 				//some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
 
-				console.log("error callback: " + JSON.stringify(error));
 				var errorMessage = JSON.stringify(error);
 				if (typeof message != "undefined") {
 					errorMessage = message;
@@ -811,10 +809,9 @@
 			) {
 				webRTCAdaptor.sendData(streamIdBox.value, text);
 			} else {
-				console.log("WebRTC connection is not active. Please click start first");
+				
 			}
 		} catch (exception) {
-			console.error(exception);
 			alert(
 				"Message cannot be sent. Make sure you've enabled data channel on server web panel"
 			);

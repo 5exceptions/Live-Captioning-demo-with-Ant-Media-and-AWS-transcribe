@@ -395,8 +395,8 @@ function createPresignedUrl() {
   var endpoint = "transcribestreaming." + region + ".amazonaws.com:8443"; // get a preauthenticated URL that we can use to establish our WebSocket
 
   return v4.createPresignedURL('GET', endpoint, '/stream-transcription-websocket', 'transcribe', crypto.createHash('sha256').update('', 'utf8').digest('hex'), {
-    'key': 'AKIA2XC6NACL4OMTNANA',
-    'secret': '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',
+    'key': 'AWS Access KeyId',
+    'secret': 'AWS Secret Key',
     //'sessionToken': $('#session_token').val(),
     'protocol': 'wss',
     'expires': 15,

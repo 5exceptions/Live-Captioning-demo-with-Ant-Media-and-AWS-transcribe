@@ -338,7 +338,7 @@
 
 				}).catch(function (error) {
 					document.getElementById("play_button").style.display = "block";
-					console.log("User interaction needed to start playing");
+					
 				});
 			}
 		}
@@ -384,7 +384,7 @@
 				liveStream = true;
 			}
 			else {
-				console.log("Unknown extension: " + extension);
+				
 				return;
 			}
 
@@ -612,23 +612,22 @@
 				debug: true,
 				callback: function (info, description) {
 					if (info == "initialized") {
-						console.log("initialized");
 						iceConnected = false;
 						webRTCAdaptor.getStreamInfo(streamId);
 					}
 					else if (info == "streamInformation") {
-						console.log("stream information");
+						
 						webRTCAdaptor.play(streamId, token, "",[] ,subscriberId, subscriberCode);
 					}
 					else if (info == "play_started") {
 						//joined the stream
-						console.log("play started");
+						
 						setPlaceHolderVisibility(false);
 						setHLSElementsVisibility(false);
 						playWebRTCVideo();
 					} else if (info == "play_finished") {
 						//leaved the stream
-						console.log("play finished");
+						
 						setHLSElementsVisibility(false);
 						hideWebRTCElements();
 						setPlaceHolderVisibility(true);
@@ -652,7 +651,7 @@
 					else if (info == "closed") {
 						//console.log("Connection closed");
 						if (typeof description != "undefined") {
-							console.log("Connecton closed: " + JSON.stringify(description));
+							
 						}
 					}
 					else if (info == "bitrateMeasurement") {
@@ -670,14 +669,14 @@
 						}
 					}
 					else if (info == "ice_connection_state_changed") {
-						console.debug("ice connection state changed to " + description.state);
+						
 						if (description.state == "connected" || description.state == "completed") {
 							//it means the ice connection has been established
 							iceConnected = true;
 						}
 					}
 					else if (info == "resolutionChangeInfo") {
-						console.log("Resolution is changed to " + description["streamHeight"]);
+						
 						let getVideo = document.getElementById("remoteVideo");
 						let overlay = document.getElementById('video-overlay');
 						getVideo.pause();
@@ -688,7 +687,7 @@
 					//implement the logic for data channel messages
 				else if (info == "data_received") {
 				var data = description.data;
-				console.log(data+".............")
+				
 				let splitData =data.split('=>')
 				if(splitData[0]=== 'Speaker'){
 				let string = $("#transcript").val()
@@ -698,7 +697,7 @@
 					let splitString = string.split('Received: ')
 			
 					let lastWord = splitString[splitString.length - 1]
-					console.log(lastWord)
+					
 					
 					var time=remoteVideo.currentTime;
 					var endTime=time+2;
@@ -726,8 +725,7 @@
 				callbackError: function (error) {
 					//some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
 
-					console.log("error callback: " + JSON.stringify(error));
-
+					
 					if (error == "no_stream_exist") {
 
 						if (typeof noStreamCallback != "undefined") {
